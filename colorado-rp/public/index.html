@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorado RP | Realism Redefined</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+    <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'"> 
+        <span class="brand-text">Colorado RP</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#departments">Departments</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="photos.html">Media</a></li>
+        <li><a href="rules.html">Rules</a></li> <li><a href="apply.html">Apply</a></li>
+    </ul>
+</nav>
+
+    <div class="hero-wrapper">
+        <div class="hero-text">
+            <h1>Colorado <br><span class="gradient-text">Roleplay</span></h1>
+            
+            <div class="slogan">
+                "An experience to remember forever."
+            </div>
+
+            <p class="desc">
+                Welcome to Colorado Roleplay, a premier ERLC community based in Colorado, US. 
+                Join us for the most immersive roleplay experience with custom uniforms, strict roleplay rules, and active staff.
+            </p>
+
+            <div class="btn-row">
+                <a href="#" class="btn btn-primary">Join Game</a>
+                <a href="https://discord.gg/BraKJhJFBz" class="btn btn-outline">Discord</a>
+            </div>
+        </div>
+
+        <div class="server-card">
+            <div class="beta-tag">LIVE DATA</div>
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h3 style="display:flex; align-items:center; gap:10px;">
+                    <i class="fas fa-signal" style="color:#3b82f6;"></i> SERVER STATUS
+                </h3>
+                <span id="status-text" style="color:#10b981; font-weight:700; font-size:0.8rem; display:flex; align-items:center;">
+                    <span class="dot" style="background:#10b981;"></span> ONLINE
+                </span>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#94a3b8; margin-bottom: 5px;">
+                    <span>PLAYER COUNT </span>
+                    <span id="pct-text">Loading...</span>
+                </div>
+                
+                <div class="bar-container">
+                    <div class="bar-fill" id="stat-fill"></div>
+                </div>
+
+                <div style="display:flex; align-items:baseline; gap: 5px;">
+                    <span style="font-size:2.5rem; font-weight:800;" id="player-count">--</span>
+                    <span style="color:#64748b; font-size:1.5rem; font-weight:600;"> / <span id="max-count">40</span></span>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; display: flex; align-items: center; justify-content: space-between;">
+                <div style="display:flex; align-items:center; gap: 10px; color: #94a3b8; font-size: 0.9rem; font-weight: 600;">
+                    <i class="fab fa-discord" style="color: #5865F2; font-size: 1.2rem;"></i> Online Users
+                </div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: white;" id="discord-count">--</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background: rgba(0,0,0,0.2);">
+        <h2 class="section-title">Why Choose <span class="gradient-text">Us?</span></h2>
+        
+        <div class="grid">
+            <div class="dept-card">
+                <i class="fas fa-users-cog dept-icon"></i>
+                <h3>Active Staff</h3>
+                <p style="color:#94a3b8; margin-top:10px;">Our staff team is always available to ensure a fun experience and quick support.</p>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-tshirt dept-icon" style="color:#22c55e;"></i>
+                <h3>Custom Uniforms</h3>
+                <p style="color:#94a3b8; margin-top:10px;">Unique liveries and uniforms designed for the full Colorado experience.</p>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-server dept-icon" style="color:#eab308;"></i>
+                <h3>Active Server</h3>
+                <p style="color:#94a3b8; margin-top:10px;">Active sessions to ensure the experience never feels boring.</p>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-handshake dept-icon" style="color:#ef4444;"></i>
+                <h3>Community First</h3>
+                <p style="color:#94a3b8; margin-top:10px;">We listen to our members. Your voice shapes the future of the server.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="departments">
+        <h2 class="section-title">Our <span class="gradient-text">Departments</span></h2>
+        
+        <div class="grid">
+            <div class="dept-card">
+                <i class="fas fa-shield-alt dept-icon"></i>
+                <h3>Denver Police</h3>
+                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">Protecting the city streets.</p>
+                <div class="status-badge">OPEN</div>
+            </div>
+
+            <div class="dept-card">
+                <i class="fas fa-fire-extinguisher dept-icon" style="color:#ef4444;"></i>
+                <h3>Denver Fire & Rescue</h3>
+                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">First responders for emergencies.</p>
+                <div class="status-badge">OPEN</div>
+            </div>
+
+            <div class="dept-card">
+                <i class="fas fa-road dept-icon" style="color:#fbbf24;"></i>
+                <h3>State Patrol</h3>
+                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">Safety throughout Colorado.</p>
+                <div class="status-badge">OPEN</div>
+            </div>
+
+            <div class="dept-card">
+                <i class="fas fa-star dept-icon" style="color:hsl(113, 100%, 19%);"></i>
+                <h3>Jefferson County</h3>
+                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">County-wide law enforcement.</p>
+                <div class="status-badge">OPEN</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background: rgba(30, 41, 59, 0.4); text-align: center; margin-bottom: 0; padding-bottom: 80px;">
+        <h2 class="section-title">Join the <span class="gradient-text">Community</span></h2>
+        <p style="max-width: 700px; margin: 0 auto 30px auto; color: #94a3b8;">
+             We host roleplay sessions, special events, and giveaways. Join our Discord for announcements, whitelisted department applications, and more!
+        </p>
+        <a href="https://discord.gg/BraKJhJFBz" class="btn btn-primary"><i class="fab fa-discord"></i> Join Discord</a>
+    </div>
+
+    <footer style="text-align:center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); color: #64748b; font-size: 0.9rem;">
+        <p> 2026 Colorado Roleplay. Not affiliated with or endorsed by Roblox or PRC.</p>
+        <div style="margin-top:10px;">
+            <a href="rules.html" style="color:#94a3b8; text-decoration:none; margin:0 10px;">Rules</a>
+            <a href="store.html" style="color:#94a3b8; text-decoration:none; margin:0 10px;">Store</a>
+        </div>
+    </footer>
+
+    <script>
+        async function fetchRealStats() {
+            const playerEl = document.getElementById('player-count');
+            const statusEl = document.getElementById('status-text');
+            const fillEl = document.getElementById('stat-fill');
+            const pctEl = document.getElementById('pct-text');
+            const discordEl = document.getElementById('discord-count');
+
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                
+                const players = data.players || 0;
+                const max = data.maxPlayers || 40;
+                const percentage = Math.min(Math.floor((players / max) * 100), 100);
+
+                playerEl.innerText = players;
+                document.getElementById('max-count').innerText = max;
+                fillEl.style.width = percentage + "%";
+                pctEl.innerText = percentage + "%";
+
+                if(data.online && players > 0) {
+                    statusEl.innerHTML = '<span class="dot" style="background:#10b981; box-shadow:0 0 10px #10b981;"></span> ONLINE';
+                    statusEl.style.color = '#10b981';
+                } else {
+                    statusEl.innerHTML = '<span class="dot" style="background:#fbbf24;"></span> OFFLINE';
+                    statusEl.style.color = '#FC4242';
+                }
+            } catch (err) { console.warn("Backend Error:", err); }
+
+            // Discord Fetch
+            try {
+                const discordRes = await fetch('https://discord.com/api/guilds/1317032666331353099/widget.json');
+                const discordData = await discordRes.json();
+                if(discordEl) discordEl.innerText = discordData.presence_count || 0;
+            } catch (err) { if(discordEl) discordEl.innerText = "-"; }
+        }
+
+        fetchRealStats();
+        setInterval(fetchRealStats, 15000);
+    </script>
+</body>
+</html>
