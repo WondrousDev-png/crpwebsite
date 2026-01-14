@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ==========================================
 // ⚙️ SERVER SETTINGS
 // ==========================================
-const ERLC_SERVER_KEY = 'PASTE_YOUR_KEY_HERE'; 
+const ERLC_SERVER_KEY = 'mUcYPoJVCWQhtBtOWCNh-hxzlrqkUZdefaVrUrcYJOOqBEUQWRiEKtOnWQEZg'; 
 const DISCORD_SERVER_ID = '1317032666331353099'; 
 // ==========================================
 
