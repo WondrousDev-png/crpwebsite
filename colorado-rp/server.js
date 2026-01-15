@@ -3,7 +3,9 @@ const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
 const app = express();
-const PORT = 3000;
+
+// UPDATED: Use the system port if available (Required for Koyeb)
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -11,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ==========================================
 // ⚙️ SERVER SETTINGS
 // ==========================================
+// NOTE: For better security, consider adding this key to Koyeb's "Secrets" instead of hardcoding it here.
 const ERLC_SERVER_KEY = 'mUcYPoJVCWQhtBtOWCNh-hxzlrqkUZdefaVrUrcYJOOqBEUQWRiEKtOnWQEZg'; 
 const DISCORD_SERVER_ID = '1317032666331353099'; 
 // ==========================================
@@ -63,5 +66,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`>> SERVER STARTED: http://localhost:${PORT}`);
+    console.log(`>> SERVER STARTED: Running on port ${PORT}`);
 });
