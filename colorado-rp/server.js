@@ -4,17 +4,17 @@ const path = require('path');
 const axios = require('axios');
 const app = express();
 
-// UPDATED: Use the system port if available (Required for Koyeb)
+// Use Koyeb's dynamic port or default to 3000 for local testing
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ==========================================
-// ⚙️ SERVER SETTINGS
+// ⚙️ SERVER SETTINGS (Using Environment Variables)
 // ==========================================
-// NOTE: For better security, consider adding this key to Koyeb's "Secrets" instead of hardcoding it here.
-const ERLC_SERVER_KEY = 'mUcYPoJVCWQhtBtOWCNh-hxzlrqkUZdefaVrUrcYJOOqBEUQWRiEKtOnWQEZg'; 
+// This pulls your key from Koyeb's settings for safety.
+const ERLC_SERVER_KEY = process.env.ERLC_KEY || 'PASTE_YOUR_KEY_HERE'; 
 const DISCORD_SERVER_ID = '1317032666331353099'; 
 // ==========================================
 

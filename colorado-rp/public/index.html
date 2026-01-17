@@ -6,22 +6,131 @@
     <title>Colorado RP | Realism Redefined</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. THE OUTER GLOWING BOX --- */
+        .widget-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 16px; /* Outer curve */
+            background: #1e293b; /* Fallback color */
+            overflow: hidden; /* Clips the spinning gradient */
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); /* Permanent Outer Glow */
+            z-index: 0;
+        }
+
+        /* The Spinning Gradient (Behind everything) */
+        .widget-container::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(
+                transparent, 
+                #3b82f6, 
+                #06b6d4, 
+                #3b82f6, 
+                transparent 40%
+            );
+            animation: rotate-border 4s linear infinite;
+            z-index: -1; /* Puts it behind the inner card */
+        }
+
+        /* --- 2. THE INNER BLACK CARD --- */
+        .widget-inner {
+            margin: 4px; /* This margin reveals the gradient behind it (Thickness of border) */
+            background: #0f172a; /* Solid black/blue background */
+            border-radius: 13px; /* Inner curve */
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- 3. THE SMOOTH FADE SYSTEM --- */
+        /* Grid stack allows images to sit on top of each other */
+        .content-stack {
+            display: grid;
+            grid-template-areas: "stack";
+            min-height: 220px; /* Forces stable height */
+            position: relative;
+        }
+
+        .fade-item {
+            grid-area: stack; /* Both items occupy same space */
+            opacity: 0;
+            transform: scale(0.95); /* Starts slightly zoomed out */
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); /* "Creamy" Ease */
+            pointer-events: none; /* Can't click hidden items */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Active Class - triggers the fade in */
+        .fade-item.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+            z-index: 2;
+        }
+
+        /* --- SPECIFIC CONTENT STYLES --- */
+        .logo-view {
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .big-logo-img {
+            max-width: 140px;
+            height: auto;
+            animation: pulse-logo 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4));
+        }
+
+        .stats-view {
+            padding: 20px 25px;
+            justify-content: flex-start;
+        }
+
+        .widget-footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            background: rgba(15, 23, 42, 0.6);
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5; /* Keeps footer above animations */
+            backdrop-filter: blur(5px);
+        }
+
+        /* Animations */
+        @keyframes rotate-border {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-logo {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)); }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+    </style>
 </head>
 <body>
 
     <nav>
-    <a href="index.html" class="nav-logo">
-        <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'"> 
-        <span class="brand-text">Colorado RP</span>
-    </a>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#departments">Departments</a></li>
-        <li><a href="store.html">Store</a></li>
-        <li><a href="photos.html">Media</a></li>
-        <li><a href="rules.html">Rules</a></li> <li><a href="apply.html">Apply</a></li>
-    </ul>
-</nav>
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'"> 
+            <span class="brand-text">Colorado RP</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#departments">Departments</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="photos.html">Media</a></li>
+            <li><a href="rules.html">Rules</a></li> <li><a href="apply.html">Apply</a></li>
+        </ul>
+    </nav>
 
     <div class="hero-wrapper">
         <div class="hero-text">
@@ -38,46 +147,61 @@
 
             <div class="btn-row">
                 <a href="#" class="btn btn-primary">Join Game</a>
-                <a href="https://discord.gg/BraKJhJFBz" class="btn btn-outline">Discord</a>
+                <a href="https://discord.gg/ecdEAMdjjv" class="btn btn-outline">Discord</a>
             </div>
         </div>
 
-        <div class="server-card">
-            <div class="beta-tag">LIVE DATA</div>
-            
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <h3 style="display:flex; align-items:center; gap:10px;">
-                    <i class="fas fa-signal" style="color:#3b82f6;"></i> SERVER STATUS
-                </h3>
-                <span id="status-text" style="color:#10b981; font-weight:700; font-size:0.8rem; display:flex; align-items:center;">
-                    <span class="dot" style="background:#10b981;"></span> ONLINE
-                </span>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#94a3b8; margin-bottom: 5px;">
-                    <span>PLAYER COUNT </span>
-                    <span id="pct-text">Loading...</span>
-                </div>
+        <div class="widget-container" onmouseenter="startHover()" onmouseleave="endHover()">
+            <div class="widget-inner">
                 
-                <div class="bar-container">
-                    <div class="bar-fill" id="stat-fill"></div>
+                <div class="content-stack">
+                    
+                    <div id="layer-logo" class="fade-item active logo-view">
+                        <img src="logo.png" alt="Colorado RP Logo" class="big-logo-img">
+                    </div>
+
+                    <div id="layer-stats" class="fade-item stats-view">
+                        <div class="beta-tag" style="position:absolute; top:15px; right:15px;">LIVE DATA</div>
+                        
+                        <div style="margin-bottom:20px;">
+                            <h3 style="display:flex; align-items:center; gap:10px; margin:0;">
+                                <i class="fas fa-signal" style="color:#3b82f6;"></i> SERVER STATUS
+                            </h3>
+                        </div>
+
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#94a3b8; margin-bottom: 5px;">
+                                <span>PLAYER COUNT </span>
+                                <span id="pct-text">Loading...</span>
+                            </div>
+                            
+                            <div class="bar-container">
+                                <div class="bar-fill" id="stat-fill"></div>
+                            </div>
+
+                            <div style="display:flex; align-items:baseline; gap: 5px; margin-top:5px;">
+                                <span style="font-size:2.5rem; font-weight:800;" id="player-count">--</span>
+                                <span style="color:#64748b; font-size:1.5rem; font-weight:600;"> / <span id="max-count">40</span></span>
+                            </div>
+                            
+                            <div id="status-text" style="color:#10b981; font-weight:700; font-size:0.9rem; margin-top: 5px; display:flex; align-items:center;">
+                                <span class="dot" style="background:#10b981;"></span> ONLINE
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div style="display:flex; align-items:baseline; gap: 5px;">
-                    <span style="font-size:2.5rem; font-weight:800;" id="player-count">--</span>
-                    <span style="color:#64748b; font-size:1.5rem; font-weight:600;"> / <span id="max-count">40</span></span>
+                <div class="widget-footer">
+                    <div style="display:flex; align-items:center; gap: 10px; color: #94a3b8; font-size: 0.9rem; font-weight: 600;">
+                        <i class="fab fa-discord" style="color: #5865F2; font-size: 1.2rem;"></i> Online Users
+                    </div>
+                    <div style="font-size: 1.2rem; font-weight: 700; color: white;" id="discord-count">--</div>
                 </div>
-            </div>
 
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; display: flex; align-items: center; justify-content: space-between;">
-                <div style="display:flex; align-items:center; gap: 10px; color: #94a3b8; font-size: 0.9rem; font-weight: 600;">
-                    <i class="fab fa-discord" style="color: #5865F2; font-size: 1.2rem;"></i> Online Users
-                </div>
-                <div style="font-size: 1.2rem; font-weight: 700; color: white;" id="discord-count">--</div>
             </div>
         </div>
-    </div>
+        </div>
 
     <div class="section" style="background: rgba(0,0,0,0.2);">
         <h2 class="section-title">Why Choose <span class="gradient-text">Us?</span></h2>
@@ -113,39 +237,24 @@
             <div class="dept-card">
                 <i class="fas fa-shield-alt dept-icon"></i>
                 <h3>Denver Police</h3>
-                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">Protecting the city streets.</p>
                 <div class="status-badge">OPEN</div>
             </div>
-
             <div class="dept-card">
                 <i class="fas fa-fire-extinguisher dept-icon" style="color:#ef4444;"></i>
                 <h3>Denver Fire & Rescue</h3>
-                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">First responders for emergencies.</p>
                 <div class="status-badge">OPEN</div>
             </div>
-
             <div class="dept-card">
                 <i class="fas fa-road dept-icon" style="color:#fbbf24;"></i>
                 <h3>State Patrol</h3>
-                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">Safety throughout Colorado.</p>
                 <div class="status-badge">OPEN</div>
             </div>
-
             <div class="dept-card">
                 <i class="fas fa-star dept-icon" style="color:hsl(113, 100%, 19%);"></i>
                 <h3>Jefferson County</h3>
-                <p style="color:#94a3b8; font-size:0.85rem; margin-top:10px;">County-wide law enforcement.</p>
                 <div class="status-badge">OPEN</div>
             </div>
         </div>
-    </div>
-
-    <div class="section" style="background: rgba(30, 41, 59, 0.4); text-align: center; margin-bottom: 0; padding-bottom: 80px;">
-        <h2 class="section-title">Join the <span class="gradient-text">Community</span></h2>
-        <p style="max-width: 700px; margin: 0 auto 30px auto; color: #94a3b8;">
-             We host roleplay sessions, special events, and giveaways. Join our Discord for announcements, whitelisted department applications, and more!
-        </p>
-        <a href="https://discord.gg/BraKJhJFBz" class="btn btn-primary"><i class="fab fa-discord"></i> Join Discord</a>
     </div>
 
     <footer style="text-align:center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); color: #64748b; font-size: 0.9rem;">
@@ -157,6 +266,39 @@
     </footer>
 
     <script>
+        // --- LOGIC VARIABLES ---
+        let isHovering = false;
+        let showStats = false; // Toggle state
+        let serverIsHighPop = false; // Override state
+        
+        // --- ELEMENTS ---
+        const layerLogo = document.getElementById('layer-logo');
+        const layerStats = document.getElementById('layer-stats');
+
+        // --- HOVER HANDLERS ---
+        function startHover() { isHovering = true; updateUI(); }
+        function endHover() { isHovering = false; updateUI(); }
+
+        // --- CORE UI UPDATE ---
+        function updateUI() {
+            // Determine if we should show stats or logo
+            // 1. If High Pop -> Stats
+            // 2. If Hovering -> Stats
+            // 3. Else -> Use the Toggle Cycle
+            const shouldShowStats = serverIsHighPop || isHovering || showStats;
+
+            if (shouldShowStats) {
+                // Fade Stats IN, Logo OUT
+                layerLogo.classList.remove('active');
+                layerStats.classList.add('active');
+            } else {
+                // Fade Logo IN, Stats OUT
+                layerStats.classList.remove('active');
+                layerLogo.classList.add('active');
+            }
+        }
+
+        // --- DATA FETCHING ---
         async function fetchRealStats() {
             const playerEl = document.getElementById('player-count');
             const statusEl = document.getElementById('status-text');
@@ -184,7 +326,16 @@
                     statusEl.innerHTML = '<span class="dot" style="background:#fbbf24;"></span> OFFLINE';
                     statusEl.style.color = '#FC4242';
                 }
-            } catch (err) { console.warn("Backend Error:", err); }
+
+                // Check High Pop Logic (>10 players)
+                serverIsHighPop = (data.online && players > 10);
+                
+                updateUI();
+
+            } catch (err) { 
+                console.warn("Backend Error:", err);
+                serverIsHighPop = false;
+            }
 
             // Discord Fetch
             try {
@@ -194,8 +345,16 @@
             } catch (err) { if(discordEl) discordEl.innerText = "-"; }
         }
 
+        // --- INITIALIZE ---
         fetchRealStats();
-        setInterval(fetchRealStats, 15000);
+        setInterval(fetchRealStats, 15000); 
+
+        // Toggle Cycle (Runs every 10 seconds)
+        setInterval(() => {
+            showStats = !showStats; // Flip the switch
+            updateUI(); // Apply the switch
+        }, 10000);
+
     </script>
 </body>
 </html>
